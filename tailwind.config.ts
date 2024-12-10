@@ -8,9 +8,27 @@ export default {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: "1rem",
+        screens: {
+          "2xl": "1280px",
+        },
+      },
+      fontSize: {
+        "3xl": ["2rem", "2.4rem"],
+      },
       colors: {
-        background: "var(--background)",
+        background: {
+          DEFAULT: "var(--background)",
+          secondary: "var(--background-secondary)",
+          tertiary: "var(--background-tertiary)",
+        },
         foreground: "var(--foreground)",
+        primary: "var(--primary)",
+        gray: "var(--text-gray)",
+        offWhite: "var(--text-off-white)",
+        popover: "var(--popover)",
       },
     },
   },
