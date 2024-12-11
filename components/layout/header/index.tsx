@@ -5,6 +5,7 @@ import Language from "./language";
 import UserAction from "./user-action";
 import { ButtonIcon } from "@/components/ui/button";
 import OutlineCart from "@/components/icons/outline-cart";
+import { Suspense } from "react";
 
 export default function Header() {
   return (
@@ -13,7 +14,9 @@ export default function Header() {
         <Link href="/">
           <Image src="/logo.svg" alt="Logo" width={170} height={32} />
         </Link>
-        <FilterSearch />
+        <Suspense>
+          <FilterSearch />
+        </Suspense>
         <div className="inline-flex items-center gap-6">
           <span>List your creation</span>
           <Language />
