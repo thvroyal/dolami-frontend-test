@@ -2,13 +2,14 @@ import { Heading3 } from "@/components/ui/typography";
 import { ProductCard } from "@/components/product-card";
 import { queryProducts } from "@/actions/query-product";
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: { search?: string; category?: string };
-}) {
+export default async function Home(
+  props: {
+    searchParams: Promise<{ search?: string; category?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const { products: filteredProducts, selectedCategory } =
-    queryProducts(searchParams);
+    await queryProducts(searchParams);
 
   const categoryTitle = selectedCategory
     ? "children" in selectedCategory

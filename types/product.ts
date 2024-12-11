@@ -1,9 +1,25 @@
-export type Product = {
+export interface Review {
+  id: string;
+  userName: string;
+  rating: number;
+  comment: string;
+  date: string;
+}
+
+export interface Product {
   id: string;
   name: string;
-  creator: string;
-  rating: number;
+  creator: {
+    name: string;
+    avatar: string;
+  };
+  avgRating: number;
   price: number;
-  imageUrl?: string;
+  images: string[];
+  description: string;
+  details: {
+    [key: string]: string;
+  };
+  reviews: Review[];
   categories: [string, string];
-};
+}

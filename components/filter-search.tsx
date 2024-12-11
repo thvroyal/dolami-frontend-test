@@ -30,7 +30,7 @@ export default function FilterSearch() {
     if (search) params.set("search", search);
     if (selectedCategory !== "all") params.set("category", selectedCategory);
 
-    router.push(`?${params.toString()}`);
+    router.push(`/?${params.toString()}`);
   };
 
   return (

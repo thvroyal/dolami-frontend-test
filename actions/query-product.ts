@@ -1,5 +1,8 @@
+"use server";
+
 import { products } from "@/data/products";
 import { categories } from "@/data/categories";
+import { Product } from "@/types/product";
 
 type SearchParams = {
   search?: string;
@@ -10,7 +13,7 @@ type SelectedCategory = typeof categories[0] | (typeof categories[0]['children']
   parent: typeof categories[0] 
 });
 
-export function getSelectedCategory(categoryId?: string) {
+export async function getSelectedCategory(categoryId?: string) {
   if (!categoryId) return null;
   
   return categories.reduce((found, parent) => {
@@ -21,8 +24,8 @@ export function getSelectedCategory(categoryId?: string) {
   }, null as null | SelectedCategory);
 }
 
-export function queryProducts(searchParams: SearchParams) {
-  const selectedCategory = getSelectedCategory(searchParams.category);
+export async function queryProducts(searchParams: SearchParams) {
+  const selectedCategory = await getSelectedCategory(searchParams.category);
 
   const filteredProducts = products.filter((product) => {
     const matchesSearch = !searchParams.search || 
@@ -41,4 +44,8 @@ export function queryProducts(searchParams: SearchParams) {
     products: filteredProducts,
     selectedCategory
   };
+}
+
+export async function getProduct(id: string): Promise<Product | undefined> {
+  return products.find((product) => product.id === id);
 }

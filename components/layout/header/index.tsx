@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import FilterSearch from "@/components/filter-search";
 import Language from "./language";
 import UserAction from "./user-action";
@@ -9,7 +10,9 @@ export default function Header() {
   return (
     <header className="py-4">
       <div className="container flex justify-between items-center gap-[100px]">
-        <Image src="/logo.svg" alt="Logo" width={170} height={32} />
+        <Link href="/">
+          <Image src="/logo.svg" alt="Logo" width={170} height={32} />
+        </Link>
         <FilterSearch />
         <div className="inline-flex items-center gap-6">
           <span>List your creation</span>
