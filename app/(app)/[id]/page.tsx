@@ -13,7 +13,7 @@ export default async function ProductPage(props: {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="container py-8">
       <div className="flex flex-col md:flex-row gap-8">
         <div className="md:w-1/2">
           <div className="h-[600px] sticky top-8 bg-background-secondary rounded-lg">
