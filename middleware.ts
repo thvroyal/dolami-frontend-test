@@ -8,6 +8,10 @@ export function middleware(request: NextRequest) {
   if (!isAuthed && !isPasswordPage) {
     return NextResponse.redirect(new URL('/password', request.url));
   }
+  
+  if (isAuthed && isPasswordPage) {
+    return NextResponse.redirect(new URL('/', request.url));
+  }
 
   return NextResponse.next();
 }

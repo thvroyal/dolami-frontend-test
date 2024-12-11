@@ -1,16 +1,6 @@
-import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+import { handlePassword } from "@/actions/password";
 
 export default function PasswordPage() {
-  async function handlePassword(formData: FormData) {
-    'use server'
-    const password = formData.get('password')
-    if (password === process.env.SITE_PASSWORD) {
-      const cookieStore = await cookies()
-      cookieStore.set('auth', 'true')
-      redirect('/')
-    }
-  }
 
   return (
     <div className="min-h-screen flex items-center justify-center">
